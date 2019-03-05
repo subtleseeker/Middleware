@@ -6,6 +6,20 @@ body{
     background-color: #181818 !important;
 }
 
+form{
+    margin: 25px auto;
+}
+
+.form-inline{
+    /* background-color: aqua; */
+    /* margin: 10px auto; */
+}
+
+.form-control-file{
+    /* margin: 0 auto; */
+    width: auto;
+}
+
 .container{
     /* background-color: #fff; */
     height: 100%;
@@ -28,18 +42,18 @@ body{
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-.button-div{
+/* .button-div{
     margin: 0 auto;
     margin-top: 10px;
     display: flex;
     flex-direction: row;
-    /* position: relative; */
+    /* position: relative; * /
     overflow: hidden;
-    /* display: inline-block; */
+    /* display: inline-block; * /
 }
 
 .file-btn-wrapper{
-    /* position: relative; */
+    /* position: relative; * /
     overflow: hidden;
     display: inline-block;
     margin-right: 4px;
@@ -51,7 +65,7 @@ body{
     left: 0;
     top: 0;
     opacity: 0;
-  } 
+  }  */
 
 .navbar-custom {
     background-color: #181818;
