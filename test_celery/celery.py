@@ -1,8 +1,5 @@
-from celery import Celery
+from celery import Celery, bootsteps
 from kombu import Exchange, Queue
-from celery.exceptions import Reject
-
-from celery import bootsteps
 
 default_queue_name = 'default'
 default_exchange_name = 'default'
@@ -14,7 +11,7 @@ deadletter_routing_key = default_routing_key + '.{deadletter_suffix}'
 
 
 class DeclareDLXnDLQ(bootsteps.StartStopStep):
-    """
+    """c
     Celery Bootstep to declare the DL exchange and queues before the worker starts
         processing tasks
     """
@@ -32,10 +29,12 @@ class DeclareDLXnDLQ(bootsteps.StartStopStep):
         with worker.app.pool.acquire() as conn:
             dead_letter_queue.bind(conn).declare()
 
+app = Celery('test_celery',
+			broker = 'amqp://subtleseeker:password@localhost/subtleseeker_vhost',
+			backend= 'rpc://',
+			include=['test_celery.tasks'])
 
-app = Celery(
-    'tasks',
-    broker='amqp://guest@localhost:5672//')
+            # broker='amqp://guest@localhost:5672//',
 
 default_exchange = Exchange(default_exchange_name, type='direct')
 default_queue = Queue(
@@ -45,7 +44,8 @@ default_queue = Queue(
     queue_arguments={
         'x-dead-letter-exchange': deadletter_exchange_name,
         'x-dead-letter-routing-key': deadletter_routing_key
-    })
+    }
+)
 
 app.conf.task_queues = (default_queue, )
 
@@ -57,15 +57,3 @@ app.conf.task_default_exchange = default_exchange_name
 app.conf.task_default_routing_key = default_routing_key
 
 
-@app.task
-def add(x, y):
-    return x + y
-
-
-@app.task(acks_late=True)
-def div(x, y):
-    try:
-        z = x / y
-        return z
-    except ZeroDivisionError as exc:
-        raise Reject(exc, requeue=False)
