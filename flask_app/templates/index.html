@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Cluster Middleware</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="src/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="src/css/index.css"> -->
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles/src/bootstrap.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='styles/index.css')}}">
+    
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar navbar-custom navbar-expand-lg">
+            <a class="navbar-brand" href="#">Middleware</a>
+            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- <div class="collapse navbar-collapse" id="collapsibleNavId">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownId">
+                            <a class="dropdown-item" href="#">Action 1</a>
+                            <a class="dropdown-item" href="#">Action 2</a>
+                        </div>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div> -->
+        </nav>
+
+        <div class="mid-main">
+            <div 
+                class="upload-label">Upload the file for processing
+
+            </div>
+            <!-- <div class="button-div">
+                <div class="file-btn-wrapper">
+                    <button class="btn btn-light">Choose file</button>
+                    <input type="file" name="myfile"/>
+                </div>
+                <button class="btn btn-light" type="submit">Submit</button>
+            </div> -->
+
+            <div class="div_radios flex-container">
+                <div class="radio">
+                    <label><input type="radio" name="optradio" checked>Username-password generator</label>
+                </div>
+                <div class="radio">
+                    <label><input type="radio" name="optradio">Matrix Multiplication</label>
+                </div>
+ 
+            </div>
+
+                
+            </div>
+
+            <form class="form-inline">
+			  <div class="form-group mb-2">
+			    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+              </div>
+              <button style="margin-left: 20px" type="submit" class="button mb-2">Upload</button>
+			</form>
+            
+        </div>
+
+    </div>    
+    <script
+        src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script>
+    <script src="{{url_for('static', filename='scripts/src/bootstrap.min.js')}}"></script>
+    <script src="{{url_for('static', filename='scripts/index.js')}}"></script>    
+    <!-- <script src="src/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="src/js/index.js"></script> -->
+
+</body>
+</html>
