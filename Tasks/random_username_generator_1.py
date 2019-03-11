@@ -19,5 +19,5 @@ for x in range(N):
     username.append(s1)
     password.append(s2)
 
-print (username)
-print (password)
+for i in range(N):
+	print (username[i] + ": " + password[i])

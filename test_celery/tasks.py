@@ -4,6 +4,8 @@ import time
 import requests
 import pandas as pd
 import numpy as np
+import random  
+
 # from worker import app
 
 # The variable `acks_late=True` makes the system Fault Tolerant
@@ -14,6 +16,31 @@ def longtime_add(x,y):
     time.sleep(5)
     print("Long time task finished")
     return x+y
+
+# @app.task(acks_late=True)
+# def username_password_generator(N):
+#     N = int(input())
+#     # M = int(input())
+#     M = 5
+#     password = []
+#     username = []
+#     for x in range(N): 
+#         s1 = ""
+#         s2 = ""
+        
+#         # print 10 random values 
+#         # between 1 and 100 
+#         for y in range(M):
+#             s1 = s1 + chr(random.randint(97, 122))
+#             z = random.randint(1,2)
+#             if(z  == 1):
+#                 s2 = s2 + chr(random.randint(97,122))
+#             else:
+#                 s2 = s2 + str(random.randint(1, 9)) 
+#         username.append(s1)
+#         password.append(s2)
+
+#     return (username, password)
 
 # @app.task(bind=True, name='fetch_bitcoin_price_index')
 # def fetch_bitcoin_price_index(self, start_date, end_date):
