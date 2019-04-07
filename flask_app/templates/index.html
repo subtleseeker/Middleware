@@ -19,65 +19,47 @@
                 aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <!-- <div class="collapse navbar-collapse" id="collapsibleNavId">
-                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownId">
-                            <a class="dropdown-item" href="#">Action 1</a>
-                            <a class="dropdown-item" href="#">Action 2</a>
-                        </div>
-                    </li>
-                </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
-            </div> -->
         </nav>
 
         <div class="mid-main">
-            <div 
-                class="upload-label">Upload the file for processing
+            <form action="/test" id="task-form" class="radioform" method="POST">
+                <fieldset>
+                    <legend>Upload the file for processing</legend>
 
-            </div>
-            <!-- <div class="button-div">
-                <div class="file-btn-wrapper">
-                    <button class="btn btn-light">Choose file</button>
-                    <input type="file" name="myfile"/>
-                </div>
-                <button class="btn btn-light" type="submit">Submit</button>
-            </div> -->
+                    <div class="custom-radio">
+                        <input type="radio" class="radio" id="matmul" name="radioform" value="matmul" checked>
+                        <label class="radio-label" for="">Matrix Multiplication</label>
+                    </div>
 
-            <div class="div_radios flex-container">
-                <div class="radio">
-                    <label><input type="radio" name="optradio" checked>Username-password generator</label>
-                </div>
-                <div class="radio">
-                    <label><input type="radio" name="optradio">Matrix Multiplication</label>
-                </div>
- 
-            </div>
+                    <div class="custom-radio">
+                            <input type="radio" class="radio" id="userpass" name="radioform" value="userpass">
+                            <label class="radio-label" for="">Username-password generator</label>
+                    </div>
 
-                
-            </div>
+                    <div class="custom-radio">
+                            <input type="radio" class="radio" id="addition" name="radioform" value="addition">
+                            <label class="radio-label" for="">Addition</label>
+                    </div>
 
-            <form class="form-inline" method="POST" enctype="multipart/form-data">
-			  <div class="form-group mb-2">
-			    <input type="file" class="form-control-file" name="file" id="exampleFormControlFile1">
-              </div>
-              <button style="margin-left: 20px" type="submit" class="button mb-2">Upload</button>
-			</form>
+                    <div class="custom-radio">
+                            <input type="radio" class="radio" id="multiplication" name="radioform" value="multiplication">
+                            <label class="radio-label" for="">Multiplication</label>
+                    </div>
+
+                    <div class="form-group mb-2">
+                            <input type="file" class="form-control-file" name="radioform" id="uploadFile">
+                    </div>
+
+                    <div style="width:100%;">
+                        <input type='submit' onclick="onClickUpload" name="submit" value="Upload" style="margin: 20px auto; width: 50%; display: flex; justify-content: center;"/>
+                    </div>
+                </fieldset>
+            </form>
             
         </div>
 
     </div>    
+
     <script
         src="https://code.jquery.com/jquery-3.3.1.js"
         integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="

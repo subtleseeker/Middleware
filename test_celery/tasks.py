@@ -10,6 +10,8 @@ import random
 
 # The variable `acks_late=True` makes the system Fault Tolerant
 # Any functions that has to be run as background tasks need to be decorated with the celery.task decorator
+
+
 @app.task(acks_late=True)
 def longtime_add(x,y):
     print("long time task begins")
@@ -17,30 +19,42 @@ def longtime_add(x,y):
     print("Long time task finished")
     return x+y
 
-# @app.task(acks_late=True)
-# def username_password_generator(N):
-#     N = int(input())
-#     # M = int(input())
-#     M = 5
-#     password = []
-#     username = []
-#     for x in range(N): 
-#         s1 = ""
-#         s2 = ""
+@app.task(acks_late=True)
+def username_password_generator(N):
+    # N = int(input())
+    # M = int(input())
+    N = 2
+    M = 5
+    password = []
+    username = []
+    for x in range(N): 
+        s1 = ""
+        s2 = ""
         
-#         # print 10 random values 
-#         # between 1 and 100 
-#         for y in range(M):
-#             s1 = s1 + chr(random.randint(97, 122))
-#             z = random.randint(1,2)
-#             if(z  == 1):
-#                 s2 = s2 + chr(random.randint(97,122))
-#             else:
-#                 s2 = s2 + str(random.randint(1, 9)) 
-#         username.append(s1)
-#         password.append(s2)
+        # print 10 random values 
+        # between 1 and 100 
+        for y in range(M):
+            s1 = s1 + chr(random.randint(97, 122))
+            z = random.randint(1,2)
+            if(z  == 1):
+                s2 = s2 + chr(random.randint(97,122))
+            else:
+                s2 = s2 + str(random.randint(1, 9)) 
+        username.append(s1)
+        password.append(s2)
 
-#     return (username, password)
+    # return password
+    return (username, password)
+
+@app.task(acks_late=True)
+def matrix_multiplication():
+    print("Yeyeye")
+
+@app.task(acks_late=True)
+def multiplication():
+    print("Do it yourself..")
+
+
 
 # @app.task(bind=True, name='fetch_bitcoin_price_index')
 # def fetch_bitcoin_price_index(self, start_date, end_date):
