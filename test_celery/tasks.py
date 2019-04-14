@@ -2,6 +2,7 @@ from __future__ import absolute_import
 from test_celery.celery import app
 import time
 from kombu import Queue
+import random
 
 app.conf.task_default_queue = 'default'
 app.conf.tasks_queues = (
@@ -19,6 +20,7 @@ def longtime_add(x, y):
 
 @app.task(queue='prime')
 def return_prime(x):
+    print('long time task begins')
     for i in range(2, x-1):
         if x % i == 0:
             return False
@@ -28,3 +30,26 @@ def return_prime(x):
 @app.task(queue='multiply')
 def multiply(x, y):
     return x*y
+
+@app.task()
+def upgenerator():
+    N = 3
+    M = 5
+    password = []
+    username = []
+    for x in range(N):
+        s1 = ""
+        s2 = ""
+        
+        # print 10 random values
+        # between 1 and 100
+        for y in range(M):
+            s1 = s1 + chr(random.randint(97, 122))
+            z = random.randint(1,2)
+            if(z  == 1):
+                s2 = s2 + chr(random.randint(97,122))
+            else:
+                s2 = s2 + str(random.randint(1, 9))
+                username.append(s1)
+                password.append(s2)
+    return (username, password)
