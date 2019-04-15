@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for ,flash
+from flask import Flask, render_template, request, redirect, url_for ,flash, send_file
 import os,subprocess
 from werkzeug.utils import secure_filename
 
@@ -36,6 +36,21 @@ def upload_file():
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             return redirect(url_for('upload_file',filename=filename))
     return render_template('index.html')  
+
+@app.route('/return-files/')
+def return_files_tut():
+	try:
+		return send_file('/home/gaddafi/sampl.txt', as_attachment=True)
+	except Exception as e:
+		return str(e)
+
+@app.route('/file-downloads/')
+def file_downloads():
+    try:
+        return render_template('downloads.html')
+    except Exception as e:
+        return str(e)
+
 
 # @app.route('/task', methods=['GET', 'POST'])
 # def run_task():
