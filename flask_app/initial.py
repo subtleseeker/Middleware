@@ -12,11 +12,29 @@ app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 def hello():
     return render_template('index.html')
 
+@app.route('/upload') #Decorator 
+def helloo():
+    return render_template('upload.html')
+
+
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-@app.route('/test', methods=['GET', 'POST'])
+@app.route('/',methods=['GET','POST'])
+def choose_file():
+    #return render_template('upload.html')
+    #if 'form_choose' in request.form:
+    if request.method == 'POST':
+        # check if the post request has the file part
+        x = request.form['options']
+        print(x)
+        return render_template('upload.html')
+    else:
+        return render_template('index.html')
+
+
+@app.route('/upload', methods=['GET', 'POST'])
 def upload_file():
     if request.method == 'POST':
         # check if the post request has the file part
