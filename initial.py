@@ -23,20 +23,20 @@ def helloo():
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+@app.route('/upload?options=<text>')
+def search(text:str):
+    print(request.headers.get("text"))
 
-@app.route('/',methods=['GET','POST'])
-def choose_file():
-    #return render_template('upload.html')
-    #if 'form_choose' in request.form:
-    if request.method == 'POST':
-        # check if the post request has the file part
-        x = request.form['options']
-        print(x)
-        return render_template('upload.html')
-    else:
-        return render_template('index.html')
 @app.route('/upload', methods=['GET', 'POST'])
 def upload_file():
+    url = request.url
+    length = len(request.base_url)
+    print("AAAAAAAAA",length)
+    print(url)
+    url = url[length+9:]
+    print(url)
+    #x = request.form.GET.get['options']
+    #print(x)
     if request.method == 'POST':
         # check if the post request has the file part
         if 'file' not in request.files:
@@ -57,6 +57,21 @@ def upload_file():
             res  = np.copy(res_out)
             return redirect(url_for('return_files',filename=filename))
     return render_template('index.html')  
+
+@app.route('/',methods=['GET','POST'])
+def choose_file():
+    #return render_template('upload.html')
+    #if 'form_choose' in request.form:
+
+    if request.method == 'POST':
+        # check if the post request has the file part
+        x = request.form['options']
+        print(x)
+        #if(x == "option1"):
+        #    return render_template('upload.html')
+        return render_template('index.html')
+    else:
+        return render_template('index.html')
 
 @app.route('/return-files/')
 def return_files():
