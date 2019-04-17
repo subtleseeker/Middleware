@@ -1,5 +1,5 @@
 from __future__ import absolute_import
-from agam_test_celery.celery import app
+from celery_test.celeryapp import app
 import time
 
 
