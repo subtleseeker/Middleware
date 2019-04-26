@@ -1,4 +1,4 @@
-from .tasks import longtime_add
+from .tasks import longtime_multiply
 import time
 import os
 from os.path import dirname,abspath
@@ -19,7 +19,7 @@ for f in os.listdir(upload_folder):
     f_out = open(output_folder+"/"+"out.txt","a+")
     for line in fh:
         a,b = line.split(" ")
-        result = longtime_add.delay(int(a),int(b))
+        result = longtime_multiply.delay(int(a),int(b))
         print(result.task_id)
         # at this time, our task is not finished, so it will return False
         print('Task finished? ', result.ready())

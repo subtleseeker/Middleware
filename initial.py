@@ -3,11 +3,11 @@ import os,subprocess
 from werkzeug.utils import secure_filename
 from os.path import dirname, abspath
 import numpy as np
-
 file_path = dirname(dirname(abspath(__file__)))
 UPLOAD_FOLDER = './celery_test/Uploads'
 OUTPUT_FOLDER = './celery_test/Outputs'
 ALLOWED_EXTENSIONS = set(['txt', 'png', 'jpg', 'jpeg','pdf'])
+TASKS = {"Add":1, "Multiply":2, "ImageFilter":3}
 
 app = Flask(__name__)
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
@@ -29,12 +29,12 @@ def search(text:str):
 
 @app.route('/upload', methods=['GET', 'POST'])
 def upload_file():
-    url = request.url
+    urll = request.url
     length = len(request.base_url)
     print("AAAAAAAAA",length)
-    print(url)
-    url = url[length+9:]
-    print(url)
+    print(urll)
+    urll = urll[length+9:]
+    print(TASKS[urll])
     #x = request.form.GET.get['options']
     #print(x)
     if request.method == 'POST':
@@ -53,7 +53,11 @@ def upload_file():
             print("Hi")
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            from celery_test.run_tasks import res_out
+            print(urll)
+            if TASKS[urll] == 1 :
+                from celery_test.add_run_tasks import res_out
+            elif TASKS[urll] == 2 :
+                from celery_test.multiply_run_tasks import res_out
             res  = np.copy(res_out)
             return redirect(url_for('return_files',filename=filename))
     return render_template('index.html')  
