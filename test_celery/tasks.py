@@ -28,51 +28,60 @@ app.conf.tasks_queues = (
 
 @app.task(queue='add')
 def longtime_add(x, y):
-    print('long time task begins')
-    print ('long time task finished')
-    return x+y
-
+    try:
+        print('long time task begins')
+        print ('long time task finished')
+        return x+y
+    except ConnectionError as exc:
+        self.retry(exc=exc,countdown=5)
 
 @app.task(queue='prime')
 def return_prime(x):
-    print('long time task begins')
-    for i in range(2, x-1):
-        if x % i == 0:
-            return False
-    else:
-        return True
+    try:
+        print('long time task begins')
+        for i in range(2, x-1):
+            if x % i == 0:
+                return False
+        else:
+            return True
 
+    except ConnectionError as exc:
+        self.retry(exc=exc,countdown=180)    
 @app.task(queue='multiply')
 def multiply(x, y):
-    return x*y
-
+    try: 
+        return x*y
+    except ConnectionError as exc:
+        self.retry(exc=exc,countdown=180)
 @app.task(queue='upgen')
 def upgenerator():
-    N = 3
-    M = 5
-    password = []
-    username = []
-    for x in range(N):
-        s1 = ""
-        s2 = ""
-        
-        # print 10 random values
-        # between 1 and 100
-        for y in range(M):
-            s1 = s1 + chr(random.randint(97, 122))
-            z = random.randint(1,2)
-            if(z  == 1):
-                s2 = s2 + chr(random.randint(97,122))
-            else:
-                s2 = s2 + str(random.randint(1, 9))
-                username.append(s1)
-                password.append(s2)
-    return (username, password)
+    try:
+        N = 3
+        M = 5
+        password = []
+        username = []
+        for x in range(N):
+            s1 = ""
+            s2 = ""
+            
+            # print 10 random values
+            # between 1 and 100
+            for y in range(M):
+                s1 = s1 + chr(random.randint(97, 122))
+                z = random.randint(1,2)
+                if(z  == 1):
+                    s2 = s2 + chr(random.randint(97,122))
+                else:
+                    s2 = s2 + str(random.randint(1, 9))
+                    username.append(s1)
+                    password.append(s2)
+        return (username, password)
 
-
+    except ConnectionError as exc:
+        self.retry(exc=exc,countdown=180)    
 
 ################## delete me ##################################
-# from __future__ import absolute_import
+# from _future_ import absolute_import
 # from test_celery.celery import app
 # import time
 # from kombu import Queue

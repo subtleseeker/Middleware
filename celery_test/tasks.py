@@ -1,39 +1,39 @@
+# from __future__ import absolute_import
+# from celery_test.celeryapp import app
+# import time
+
+
+# @app.task
+# def longtime_add(x, y):
+#     print('long time task begins')
+#     # sleep 5 seconds
+#     time.sleep(5)
+#     print('long time task finished')
+#     return x + y
+
+# @app.task
+# def longtime_multiply(x, y):
+#     print('long time task begins')
+#     # sleep 5 seconds
+#     time.sleep(5)
+#     print('long time task finished')
+#     return x * y
+
 from __future__ import absolute_import
 from celery_test.celeryapp import app
 import time
+from kombu import Queue
+import random
 
+app.conf.task_default_queue = 'celery'
+app.conf.tasks_queues = (
+    Queue('default', exchange ='celery', routing_key='default'),
+    Queue('add', exchange='celery', routing_key='add'),
+    Queue('multiply', exchange='celery',routing_key='multiply'),
+    Queue('prime',exchange='celery',routing_key='prime'),
+    Queue('upgen',exchange='celery',routing_key='upgen')
 
-@app.task
-def longtime_add(x, y):
-    print('long time task begins')
-    # sleep 5 seconds
-    time.sleep(5)
-    print('long time task finished')
-    return x + y
-
-@app.task
-def longtime_multiply(x, y):
-    print('long time task begins')
-    # sleep 5 seconds
-    time.sleep(5)
-    print('long time task finished')
-    return x * y
-
-# from __future__ import absolute_import
-# from test_celery.celery import app
-# import time
-# from kombu import Queue
-# import random
-
-# app.conf.task_default_queue = 'celery'
-# app.conf.tasks_queues = (
-#     Queue('default', exchange ='celery', routing_key='default'),
-#     Queue('add', exchange='celery', routing_key='add'),
-#     Queue('multiply', exchange='celery',routing_key='multiply'),
-#     Queue('prime',exchange='celery',routing_key='prime'),
-#     Queue('upgen',exchange='celery',routing_key='upgen')
-
-# )
+)
 
 # # @app.task(queue='add')
 # # def longtime_add(x, y):
@@ -47,11 +47,11 @@ def longtime_multiply(x, y):
 
 # #     return l
 
-# @app.task(queue='add')
-# def longtime_add(x, y):
-#     print('long time task begins')
-#     print ('long time task finished')
-#     return x+y
+@app.task(queue='add')
+def longtime_add(x, y):
+    print('long time task begins')
+    print ('long time task finished')
+    return x+y
 
 
 # @app.task(queue='prime')
@@ -63,9 +63,11 @@ def longtime_multiply(x, y):
 #     else:
 #         return True
 
-# @app.task(queue='multiply')
-# def multiply(x, y):
-#     return x*y
+@app.task(queue='multiply')
+def longtime_multiply(x, y):
+    print('long time task begins')
+    print ('long time task finished')
+    return x*y
 
 # @app.task(queue='upgen')
 # def upgenerator():
