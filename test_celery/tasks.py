@@ -81,7 +81,7 @@ def upgenerator():
         self.retry(exc=exc,countdown=180)    
 
 ################## delete me ##################################
-# from __future__ import absolute_import
+# from _future_ import absolute_import
 # from test_celery.celery import app
 # import time
 # from kombu import Queue
