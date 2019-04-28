@@ -27,10 +27,10 @@ import random
 
 app.conf.task_default_queue = 'celery'
 app.conf.tasks_queues = (
-    Queue('default', exchange ='celery', routing_key='default'),
+    Queue('noise', exchange ='celery', routing_key='noise'),
     Queue('add', exchange='celery', routing_key='add'),
     Queue('multiply', exchange='celery',routing_key='multiply'),
-    Queue('prime',exchange='celery',routing_key='prime'),
+    Queue('brightness',exchange='celery',routing_key='brightness'),
     Queue('upgen',exchange='celery',routing_key='upgen')
 
 )

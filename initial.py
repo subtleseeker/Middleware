@@ -7,7 +7,7 @@ file_path = dirname(dirname(abspath(__file__)))
 UPLOAD_FOLDER = './celery_test/Uploads'
 OUTPUT_FOLDER = './celery_test/Outputs'
 ALLOWED_EXTENSIONS = set(['txt', 'png', 'jpg', 'jpeg','pdf'])
-TASKS = {"Add":1, "Multiply":2, "ImageFilter":3}
+TASKS = {"Add":1, "Multiply":2, "ImageFilter":3, "NoiseRemoval":4}
 
 app = Flask(__name__)
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
@@ -58,6 +58,10 @@ def upload_file():
                 from celery_test.add_run_tasks import res_out
             elif TASKS[urll] == 2 :
                 from celery_test.multiply_run_tasks import res_out
+            elif TASKS[urll] == 3 :
+                from celery_test.filter_run_tasks import res_out
+            elif TASKS[urll] == 4 :
+                from celery_test.noise_run_tasks import res_out
             res  = np.copy(res_out)
             return redirect(url_for('return_files',filename=filename))
     return render_template('index.html')  
