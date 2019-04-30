@@ -27,11 +27,11 @@ import random
 
 app.conf.task_default_queue = 'celery'
 app.conf.tasks_queues = (
-    Queue('noise', exchange ='celery', routing_key='noise'),
-    Queue('add', exchange='celery', routing_key='add'),
-    Queue('multiply', exchange='celery',routing_key='multiply'),
-    Queue('brightness',exchange='celery',routing_key='brightness'),
-    Queue('upgen',exchange='celery',routing_key='upgen')
+	Queue('noise', exchange ='celery', routing_key='noise'),
+	Queue('add', exchange='celery', routing_key='add'),
+	Queue('multiply', exchange='celery',routing_key='multiply'),
+	Queue('brightness',exchange='celery',routing_key='brightness'),
+	Queue('upgen',exchange='celery',routing_key='upgen')
 
 )
 
@@ -49,9 +49,12 @@ app.conf.tasks_queues = (
 
 @app.task(queue='add')
 def longtime_add(x, y):
-    print('long time task begins')
-    print ('long time task finished')
-    return x+y
+	try:
+		print('long time task begins')
+		print ('long time task finished')
+		return x+y
+	except ConnectionError as exc:
+		self.retry(exc=exc,countdown=5)
 
 
 # @app.task(queue='prime')
@@ -65,9 +68,12 @@ def longtime_add(x, y):
 
 @app.task(queue='multiply')
 def longtime_multiply(x, y):
-    print('long time task begins')
-    print ('long time task finished')
-    return x*y
+	try:
+		print('long time task begins')
+		print ('long time task finished')
+		return x*y
+	except ConnectionError as exc:
+		self.retry(exc=exc,countdown=5)
 
 # @app.task(queue='upgen')
 # def upgenerator():
@@ -78,7 +84,7 @@ def longtime_multiply(x, y):
 #     for x in range(N):
 #         s1 = ""
 #         s2 = ""
-        
+		
 #         # print 10 random values
 #         # between 1 and 100
 #         for y in range(M):
@@ -137,7 +143,7 @@ def longtime_multiply(x, y):
 # #     for x in range(N):
 # #         s1 = ""
 # #         s2 = ""
-        
+		
 # #         # print 10 random values
 # #         # between 1 and 100
 # #         for y in range(M):
