@@ -5,15 +5,15 @@
 ### Installing Celery and RabbitMQ  
 To run the project, first install RabbitMQ and celery.   
 1. Install celery using pip:      
-`$ pip install celery`   
+```$ pip install celery``` 
 2. Install RabbitMQ using apt:   
-`$ sudo apt-get install rabbitmq-server`
+```$ sudo apt-get install rabbitmq-server```
 3. Add `sbin` in path in `.bashrc`:   
-`PATH=$PATH:/usr/local/sbin`   
+```PATH=$PATH:/usr/local/sbin```   
 4. Check if RabbitMQ is installed by: 
-`$ rabbitmq-server`   
+```$ rabbitmq-server```   
 It should print:   
-`Starting broker... completed with 10 plugins.`   
+```Starting broker... completed with 10 plugins.```   
 If it says 0 plugins, troubleshoot to install RabbitMQ properly.   
 5. Configure RabbitMQ for celery:   
 (if your username is jimmy)   
@@ -40,9 +40,9 @@ After successfully installing RabbitMQ and celery, run the project on 2 or more 
 ### Client Side 
 In another terminal:   
 1. Run the flask server in the parent directory by:
-`$ python initial.py`   
+```$ python initial.py```   
 2. Open the flask server at `localhost:5000`. 
-3. Create the file which you want to execute as a ".txt" file. 
+3. Create the file which you want to execute as a ".txt" file. The file must contain 2 space separated numbers in multiple lines.
 4. Select the task and upload the file.   
 
 
