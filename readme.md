@@ -68,7 +68,7 @@ The small pause in the video was when the server tried to retry connection with 
 **Link:** https://drive.google.com/drive/folders/14wI51kcO9MGOCTzZuUb0bHy-L9cotulz
 
 ## Helpful resources:    
-[1]: https://avilpage.com/2014/11/scaling-celery-sending-tasks-to-remote.html   
-[2]: http://docs.celeryproject.org/   
-[3]: https://www.rabbitmq.com/documentation.html   
-[4]: http://flask.pocoo.org/docs/1.0/   
+https://avilpage.com/2014/11/scaling-celery-sending-tasks-to-remote.html   
+http://docs.celeryproject.org/   
+https://www.rabbitmq.com/documentation.html   
+http://flask.pocoo.org/docs/1.0/   
