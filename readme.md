@@ -1,11 +1,25 @@
 # Middleware
 
-# How to run the project
-In one terminal run- "python initial.py" from the parent directory   
-Open the flask server at localhost:5000   
-In other terminal run the celery worker- `celery worker --app=celery_test.celeryapp:app -Q add` from the parent directory   
+## Installation
+
+### Celery and RabbitMQ 
+For celery and RabbitMQ, please refer to the link 1 for installation procedures related to Celery and RabbitMQ. 
+In order for successful execution of the code on your machine, please change the configuration in celeryconfig.py to the configuration you create in RabbitMQ. Otherwise, connections will not be established. 
+
+## How to run the project 
+### Client Side 
+In one terminal: 
+1. Run- "python initial.py" from the parent directory.   
+2. Open the flask server at localhost:5000. 
+3. Create the file which you want to execute as a ".txt" file. 
+4. Select the task and upload the file. 
+
+### Celery 
+1. In another terminal run the celery worker- `celery worker --app=celery_test.celeryapp:app -Q add` from the parent directory. (i.e. ```celery_test```)  
 
 
+
+## Flow of the code 
 
 The basic flow of the code is as follows: 
 1. The client interacts with a webpage for uploading tasks, which is connected to a Flask backend. This Flask backend can host any number of clients and can be connected to multiple servers which run our tasks (called workers) at a time.   
@@ -18,6 +32,12 @@ The client uploads a file with a task.
 
 Please feel free to reach out in case of any questions.    
 
+## Demonstration Video for fault tolerance 
+1. Video 1 (Client + Flask Server): <>
+2. Video 2 (Worker: Failure and Recovery): <> 
+3. Video 3 (Worker: Works even when the worker fails): <> 
+
+## Code and reference links 
 Project link: https://drive.google.com/open?id=1c4rzyHGWzdY-R_NriJ05NnpUekv3vSEH   
 
 Links:    
