@@ -64,7 +64,7 @@ Please feel free to reach out in case of any questions.
 2. Video 2 (Load Balancing)
 3. Video 3 (Worker: Failure and Recovery)
 4. Video 4 (Worker: Works even when the other worker fails in Video 3):  
-The small pause in the video was when the server tried to retry connection with the other server which failed and reallocate the tasks which were currently started by the other server but was not able to complete. This attribute shows the fault tolerant approach of the project. 
+The small pause in the video was when the server tried to retry connection with the other server which failed and reallocate the tasks which were currently started by the other server but was not able to complete. This attribute shows the fault tolerant approach of the project.    
 **Link:** https://drive.google.com/drive/folders/14wI51kcO9MGOCTzZuUb0bHy-L9cotulz
 
 ## Helpful resources:    
