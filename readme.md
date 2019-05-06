@@ -35,7 +35,7 @@ Please feel free to reach out in case of any questions.
 ## Demonstration Video for fault tolerance 
 1. Video 1 (Client + Flask Server): <>
 2. Video 2 (Worker: Failure and Recovery): <> 
-3. Video 3 (Worker: Works even when the worker fails): <> 
+3. Video 3 (Worker: Works even when the other worker fails): https://drive.google.com/drive/u/0/folders/122315BBZhdVSnV83Oq7AD6u4-5t2DreK  
 
 ## Code and reference links 
 Project link: https://drive.google.com/open?id=1c4rzyHGWzdY-R_NriJ05NnpUekv3vSEH   
