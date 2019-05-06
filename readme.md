@@ -9,7 +9,7 @@ In order for successful execution of the code on your machine, please change the
 ## How to run the project 
 ### Client Side 
 In one terminal: 
-1. Run- "python initial.py" from the parent directory.   
+1. Run- ```python initial.py``` from the parent directory.   
 2. Open the flask server at localhost:5000. 
 3. Create the file which you want to execute as a ".txt" file. 
 4. Select the task and upload the file. 
